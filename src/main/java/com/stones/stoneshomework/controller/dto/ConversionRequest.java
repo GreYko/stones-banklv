@@ -1,6 +1,7 @@
 package com.stones.stoneshomework.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
@@ -15,10 +16,26 @@ import java.time.LocalDate;
 public class ConversionRequest {
     private final static String inputDateFormat = "dd.MM.yyyy";
 
-    @JsonFormat(pattern = inputDateFormat)
-    @Schema(description = "Date in '"+inputDateFormat+"' format", example = "31.12.2020")
-    public LocalDate date;
-    public String sourceCurrency;
-    public BigDecimal initialAmount;
-    public String targetCurrency;
+    public final LocalDate date;
+    public final String sourceCurrency;
+    public final BigDecimal initialAmount;
+    public final String targetCurrency;
+
+    public ConversionRequest(
+            @JsonProperty("date")
+            @JsonFormat(pattern = inputDateFormat)
+            @Schema(description = "Date in '"+inputDateFormat+"' format", example = "31.12.2020")
+            LocalDate date,
+            @JsonProperty("sourceCurrency")
+            String sourceCurrency,
+            @JsonProperty("initialAmount")
+            BigDecimal initialAmount,
+            @JsonProperty("targetCurrency")
+            String targetCurrency
+    ) {
+        this.date = date;
+        this.sourceCurrency = sourceCurrency;
+        this.initialAmount = initialAmount;
+        this.targetCurrency = targetCurrency;
+    }
 }

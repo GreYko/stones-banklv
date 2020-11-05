@@ -18,8 +18,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Optional;
 
-import static com.stones.stoneshomework.integration.dto.DtoFactory.parse;
-
 // TODO: cover with real integration tests
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
