@@ -1,0 +1,9 @@
+POST localhost:8080/convert
+Content-Type: application/json
+
+{
+  "date": "23.03.2005",
+  "sourceCurrency": "EUR",
+  "initialAmount": "10.0",
+  "targetCurrency": "AUD"
+}
