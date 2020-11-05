@@ -40,12 +40,14 @@ Required use case can be found in [test.http](./test.http) file, IntelliJ IDEA i
 - [ ] Improve error handling.
 - [ ] Improve logging.
 - [ ] Request validation layer.
+- [ ] Improve documentation.
 - [ ] Prettify pom.xml, externalize versions into a properties if there are duplicates.
+- [ ] Make DTO's immutable - fast initial attempt caused Json being unable to parse LocalDate.
 - [ ] Kotlin migration.
 - [ ] Maven -> Gradle migration.
 - [ ] Parallelism for pre-loading cache (whole startup with 400 days pre-load and with additional console output took 38.4 seconds).
 - [ ] Move samples xml to test resources.
-- [ ] setup CI/CD pipeline.
+- [ ] Setup CI/CD pipeline.
    - [ ] reject commits with bad formatting.
    - [ ] reject commits with lower test coverage than threshold.
    - [ ] reject commits on static code analyzer error rules.
