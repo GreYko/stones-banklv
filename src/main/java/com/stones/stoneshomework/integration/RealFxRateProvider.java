@@ -2,6 +2,7 @@ package com.stones.stoneshomework.integration;
 
 import com.stones.stoneshomework.integration.dto.DtoFactory;
 import com.stones.stoneshomework.integration.dto.FxRatesResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.Scope;
@@ -24,15 +25,20 @@ import java.util.Optional;
 @Profile("!local")
 public class RealFxRateProvider implements FxRateProvider {
     private final DateTimeFormatter urlDateFormat = DateTimeFormatter.ofPattern("yyyyMMdd");
-    private final String url = "https://www.bank.lv/vk/ecb.xml?date=";
-
+    private final String urlBase;
 
     private final HttpClient httpClient = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_2)
             .build();
 
+    public RealFxRateProvider(
+            @Value("${fxRates.provider.urlBase}") String urlBase
+    ) {
+        this.urlBase = urlBase;
+    }
+
     protected String getUrlForDate(LocalDate date) {
-        return url + date.format(urlDateFormat);
+        return urlBase + date.format(urlDateFormat);
     }
 
     protected Optional<String> getRawData(LocalDate date) {

@@ -1,1 +1,5 @@
-daysToPreLoad: 0
+fxRates:
+  provider:
+    urlBase: https://www.bank.lv/vk/ecb.xml?date=
+  cache:
+    daysToPreLoad: 0

@@ -24,14 +24,14 @@ public class ConversionRequest {
     public ConversionRequest(
             @JsonProperty("date")
             @JsonFormat(pattern = inputDateFormat)
-            @Schema(description = "Date in '"+inputDateFormat+"' format", example = "31.12.2020")
-            LocalDate date,
+            @Schema(description = "Date in '" + inputDateFormat + "' format", example = "31.12.2020")
+                    LocalDate date,
             @JsonProperty("sourceCurrency")
-            String sourceCurrency,
+                    String sourceCurrency,
             @JsonProperty("initialAmount")
-            BigDecimal initialAmount,
+                    BigDecimal initialAmount,
             @JsonProperty("targetCurrency")
-            String targetCurrency
+                    String targetCurrency
     ) {
         this.date = date;
         this.sourceCurrency = sourceCurrency;

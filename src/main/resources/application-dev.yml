@@ -1,3 +1,9 @@
-daysToPreLoad: 0
+fxRates:
+# TODO: route to testing env endpoint
+#  provider:
+#    urlBase: https://www.bank.lv/vk/ecb.xml?date=
+  cache:
+    daysToPreLoad: 0
+
 
 debug: true

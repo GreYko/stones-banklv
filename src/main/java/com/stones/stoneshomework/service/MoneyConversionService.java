@@ -23,7 +23,7 @@ public class MoneyConversionService {
     public MoneyConversionService(
             @Autowired FxCachingService cachingService,
             @Autowired FxRateProvider fxRateProvider,
-            @Value("${daysToPreLoad:0}") int daysToPreload) {
+            @Value("${fxRates.cache.daysToPreLoad:0}") int daysToPreload) {
         this.cachingService = cachingService;
         this.fxRateProvider = fxRateProvider;
         if (daysToPreload > 0) {

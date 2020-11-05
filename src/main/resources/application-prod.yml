@@ -1,1 +1,4 @@
-daysToPreLoad: 365
+fxRates:
+  cache:
+    daysToPreLoad: 365
+
