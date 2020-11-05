@@ -46,10 +46,12 @@ public class MoneyConversionService {
         if (fxRate.isEmpty()) {
             // TODO: concurrency and locking
             Optional<HashMap<String, BigDecimal>> freshData = fxRateProvider.getFxRates(date);
-            freshData.ifPresent(it -> cachingService.storeFxRates(date, it));
-            if (freshData.isEmpty()) {
-                throw new ApplicationException(String.format("Unable to refresh live fx rates data for date: '%s'.", date));
-            }
+            freshData.ifPresentOrElse(
+                    it -> cachingService.storeFxRates(date, it),
+                    () -> {
+                        throw new ApplicationException(String.format("Unable to refresh live fx rates data for date: '%s'.", date));
+                    }
+            );
             fxRate = cachingService.getFxRate(date, currencyCode);
         }
 

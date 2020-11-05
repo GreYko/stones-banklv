@@ -1,5 +1,6 @@
 package com.stones.stoneshomework.integration;
 
+import com.stones.stoneshomework.integration.dto.DtoFactory;
 import com.stones.stoneshomework.integration.dto.FxRatesResponse;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Profile;
@@ -56,13 +57,8 @@ public class RealFxRateProvider implements FxRateProvider {
 
     public Optional<HashMap<String, BigDecimal>> getFxRates(LocalDate date) {
         Optional<String> rawData = getRawData(date);
-        if (rawData.isPresent()) {
-            Optional<FxRatesResponse> t = parse(rawData.get());
-            if (t.isPresent()) {
-                return Optional.of(t.get().getFxRatesAsMap());
-            }
-        }
-        return Optional.empty();
+        return rawData.flatMap(DtoFactory::parse)
+                .map(FxRatesResponse::getFxRatesAsMap);
     }
 
 }
